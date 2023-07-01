@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="32c440ac-8eac-4c82-bfc5-d604e8ef18df">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="BacYear" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT Name_Resident,LastName_Resident,DateBirth,PlaceBirth,Branch_Study.BranchStd_Name,Level_Study.DescriptionLevel,Resident_Case.Resident_Case,Room_Code 
+FROM Resident_Gl,Resident_Case,Branch_Study,Level_Study,Student_Res,Pavilion,Room
+ WHERE 
+ Resident_Gl.ID_Rsident=Student_Res.ID_Rsident 
+AND Student_Res.Id_BranchStd=Branch_Study.Id_BranchStd
+AND Level_Study.Id_LevelStudy=Student_Res.Id_LevelStudy 
+AND Resident_Case.ID_Case_Resident=Resident_Gl.ID_Case_Resident
+AND Student_Res.Id_Room=Room.Id_Room 
+AND Room.ID_Pavilion=Pavilion.ID_Pavilion
+AND BacYear=2018 order by Room_Code;]]>
+	</queryString>
+	<field name="Name_Resident" class="java.lang.String"/>
+	<field name="LastName_Resident" class="java.lang.String"/>
+	<field name="DateBirth" class="java.sql.Timestamp"/>
+	<field name="PlaceBirth" class="java.lang.String"/>
+	<field name="BranchStd_Name" class="java.lang.String"/>
+	<field name="DescriptionLevel" class="java.lang.String"/>
+	<field name="Resident_Case" class="java.lang.String"/>
+	<field name="Room_Code" class="java.lang.String"/>
+	<variable name="Name_Resident_1" class="java.lang.Integer" resetType="Column" calculation="Count">
+		<variableExpression><![CDATA[$F{Name_Resident}]]></variableExpression>
+	</variable>
+	<variable name="Name_Resident_2" class="java.lang.Integer" resetType="Page" calculation="Count">
+		<variableExpression><![CDATA[$F{Name_Resident}]]></variableExpression>
+	</variable>
+	<variable name="Name_Resident_3" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$F{Name_Resident}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="443" y="0" width="111" height="26" uuid="b46a9f79-aeb9-4e2c-bcab-44083acf9eb5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="166" y="-111" width="246" height="35" uuid="8beb240b-d1e3-4c21-9ffb-05a9cdce12b0"/>
+				<box>
+					<topPen lineWidth="1.25"/>
+					<leftPen lineWidth="1.25"/>
+					<bottomPen lineWidth="1.25"/>
+					<rightPen lineWidth="1.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[قـائمــــــــــة الطلبــــــة ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="54" height="35" uuid="764b80b0-9de8-4f8a-b997-77f5004bd225"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[الحالـة]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="286" y="0" width="71" height="35" uuid="88b85456-fb1d-4028-88ce-1d71628e6e6f"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[مكان الميلاد ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="171" y="0" width="115" height="35" uuid="6071236b-e23d-4716-930b-c76ca64872fd"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[التخــصص]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="357" y="0" width="72" height="35" uuid="ce6bb68c-1cfc-4746-a0ec-5df80d7a9357"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[تاريخ الميلاد]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="496" y="0" width="59" height="35" uuid="0aaa7c9e-6030-4630-a244-dcc273d2a33a"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[الاسم]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="86" y="0" width="85" height="35" uuid="f14a0360-5db7-4cc2-9e59-a2bd76e7103c"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[المستـوي]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="429" y="0" width="67" height="35" uuid="25db2559-0077-4918-bf83-418779c3b9aa"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[اللقب]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="54" y="0" width="32" height="35" uuid="cefc8fc0-f7ce-48c3-8c5d-2036a6da1fd1"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[الغرفة]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="496" y="0" width="58" height="21" uuid="181cf511-de57-404d-8475-0484e434bf35"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Name_Resident}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="429" y="0" width="67" height="21" uuid="8e826163-5f3e-4375-babd-9801e5238f89"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{LastName_Resident}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="357" y="0" width="72" height="21" uuid="807cbb7a-68b5-470f-9554-a19f5d016620"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/YYYY").format($F{DateBirth})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="286" y="0" width="71" height="21" uuid="a64c7a36-cfea-4ccd-85f3-5631e0a5d551"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PlaceBirth}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="171" y="0" width="115" height="21" uuid="978ca892-1a78-4be7-8624-9d54618e1e6a"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{BranchStd_Name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="86" y="0" width="85" height="21" uuid="f58154d2-d980-42c3-9f5f-43456587c756"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DescriptionLevel}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="54" y="0" width="32" height="21" uuid="2bd0d274-f862-4b16-9225-e8a094717592"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Room_Code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="54" height="21" uuid="eb11d06c-d162-4ed9-92c4-db91366e0e8a"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Resident_Case}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="455" y="0" width="100" height="21" uuid="3494947e-e202-4842-8f55-3ee80b5ce249"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[عـــدد الطـلبــة :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="401" y="1" width="54" height="20" uuid="997ee0bc-c99e-4798-8fbf-d796e140daa3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{Name_Resident_1}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement x="455" y="0" width="100" height="20" uuid="c79e33f1-b456-4f8c-a58d-08caab1d5a31"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[عـــدد الطـلاب الكلــي]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="357" y="0" width="100" height="20" uuid="eb63a564-8960-4c45-9364-fec4e6ee9aac"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{Name_Resident_3}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

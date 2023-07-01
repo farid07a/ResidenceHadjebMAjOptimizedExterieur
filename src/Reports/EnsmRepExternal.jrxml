@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" columnCount="2" pageWidth="595" pageHeight="842" columnWidth="277" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8e5f7051-7130-454d-b965-8a6f51079a99">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[Select Name_Resident,LastName_Resident ,DateBirth,NumCard_Resident,PlaceBirth,Branch_Study.BranchStd_Name,CodeBare_Resident,imageStd FROM  Resident_Gl,Student_ResExt,Branch_Study
+WHERE
+Resident_Gl.ID_Rsident=Student_ResExt.ID_Rsident 
+AND Branch_Study.Id_BranchStd=Student_ResExt.Id_BranchStd
+AND Id_Ptrn_Res=2;]]>
+	</queryString>
+	<field name="Name_Resident" class="java.lang.String"/>
+	<field name="LastName_Resident" class="java.lang.String"/>
+	<field name="DateBirth" class="java.sql.Timestamp"/>
+	<field name="NumCard_Resident" class="java.lang.Integer"/>
+	<field name="PlaceBirth" class="java.lang.String"/>
+	<field name="BranchStd_Name" class="java.lang.String"/>
+	<field name="CodeBare_Resident" class="java.lang.String"/>
+	<field name="imageStd" class="java.io.InputStream"/>
+	<detail>
+		<band height="138" splitType="Stretch">
+			<rectangle>
+				<reportElement x="10" y="10" width="245" height="125" uuid="bb24ee72-2850-43c2-9f7a-aa81c118e074"/>
+				<graphicElement>
+					<pen lineWidth="1.5" lineStyle="Double"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="124" y="58" width="16" height="16" uuid="0b1a0456-2800-474d-813b-05e70c07dd2a"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[بــ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="199" y="58" width="52" height="15" uuid="2643f19e-d25b-4a1d-a596-5adec4db3dc5"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[تاريخ الميلاد:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="112" y="10" width="114" height="15" uuid="f1988057-9ff6-4386-97c3-daa4ebe32d1c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[الاقامـة الجـامعيـة الحاجب]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="197" y="42" width="54" height="15" uuid="a5b7789f-f43b-4f42-8a61-8d2998441203"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[الاسم  و اللقب:]]></text>
+			</staticText>
+			<image>
+				<reportElement x="15" y="79" width="63" height="47" uuid="adeacdb2-9424-4e75-89f2-37c14faaddcb"/>
+				<imageExpression><![CDATA["D:\\Image_Signature\\SmalIcon.JPG"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="199" y="74" width="52" height="15" uuid="72937ed6-1e99-41aa-a864-2e9309d76020"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[الشعبـــــة:]]></text>
+			</staticText>
+			<image scaleImage="FillFrame">
+				<reportElement x="15" y="19" width="63" height="50" uuid="3e8c2bf5-ea8e-42ad-a8af-87e45a492f7a"/>
+				<imageExpression><![CDATA[$F{imageStd}]]></imageExpression>
+			</image>
+			<componentElement>
+				<reportElement x="97" y="92" width="79" height="35" uuid="42117fef-36c8-43b3-a703-a3ce825dd2aa"/>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128C" drawText="false" checksumRequired="false" barHeight="95">
+					<jr:codeExpression><![CDATA[$F{CodeBare_Resident}]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+			<textField>
+				<reportElement x="140" y="42" width="57" height="16" uuid="3a0b075b-ed3f-41a1-a40f-45befc9aef50"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Name_Resident}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="78" y="42" width="62" height="16" uuid="974123e6-f684-4c2b-9718-a99cc316c8a4"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{LastName_Resident}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="58" width="59" height="16" uuid="39c9deb8-bfe6-41e8-971d-76e6c28ec271"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/YYYY").format($F{DateBirth})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="78" y="57" width="46" height="17" uuid="b1085640-a402-4d60-9eeb-99b8adba9bd6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{PlaceBirth}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="78" y="74" width="119" height="15" uuid="c47c89cb-5fcc-40b5-ae7d-293e0c8b7c6b"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{BranchStd_Name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="76" y="19" width="48" height="20" forecolor="#FF0000" uuid="f3c566fe-3fa0-4df5-b735-15e33d2a2c2e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{NumCard_Resident}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

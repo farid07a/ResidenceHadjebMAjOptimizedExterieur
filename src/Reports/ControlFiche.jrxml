@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="20b896e9-3f3d-4ced-90a7-03b3982bb945">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="AnneEtd" class="java.lang.String"/>
+	<parameter name="PrPav" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT Name_Resident,LastName_Resident,Branch_Study.BranchStd_Name,Room_Code
+FROM Resident_Gl,Branch_Study,Student_Res,Room,Pavilion 
+WHERE Resident_Gl.ID_Rsident=Student_Res.ID_Rsident
+AND Student_Res.Id_BranchStd=Branch_Study.Id_BranchStd 
+AND Student_Res.Id_Room=Room.Id_Room
+AND Room.ID_Pavilion=Pavilion.ID_Pavilion]]>
+	</queryString>
+	<field name="Name_Resident" class="java.lang.String"/>
+	<field name="LastName_Resident" class="java.lang.String"/>
+	<field name="BranchStd_Name" class="java.lang.String"/>
+	<field name="Room_Code" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="587" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="191" y="156" width="203" height="36" backcolor="#CCCCCC" uuid="0dc7d28f-b946-442f-96ab-cffc2b3525a8"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="212" y="156" width="165" height="36" uuid="edb944d8-164e-491b-864d-b284c4bd30ca"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[بيـــــــان مراقبــة]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="153" y="61" width="70" height="20" uuid="3d66546b-6b3f-4901-a83d-2f33b3203784"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[الفرع :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="71" y="81" width="23" height="20" uuid="be9672c3-ae80-428e-ba24-d9c74b7bdf5d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[/]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="45" y="111" width="51" height="20" uuid="98cc4f06-67d3-461a-a15b-8c5c92fa737d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[الغرفة :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="153" y="111" width="70" height="20" uuid="941487ee-e5ec-4193-87ec-15dbd4844fa8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[الجناح :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="74" y="20" width="100" height="20" uuid="6b8f08ca-a5d3-43f3-9617-4655db5dbe7a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[بسكـرة في ..........]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="153" y="41" width="70" height="20" uuid="1b4de8a4-b874-4387-a9a3-19f4217e0153"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[الطالب : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="153" y="81" width="70" height="20" uuid="01b57668-3340-41e9-ab4d-0398a51a7d11"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[السنـة الجامعيـة :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="201" y="0" width="233" height="25" uuid="c13118ae-9a02-4c00-8765-5c204ed1b932"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ الجمهورية الجزائرية الديمقراطية الشعبية]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="276" y="203" width="279" height="24" uuid="c47ad5e8-265f-4f85-9860-88728be22184"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[نحن الممضـون أسفلــه نـؤكــد علي صــحــة المعلــومات الواردة :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="384" y="227" width="161" height="25" uuid="07aab6ae-fb60-4413-a0fc-f5b8f3c76e82"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[مراقبــــــة مستلزمـــات النـــــوم  :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="248" y="252" width="297" height="72" uuid="ab5bf636-3e98-4e76-ba87-245bb04fff1d"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[.....................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="248" y="227" width="136" height="25" uuid="a7af2e2d-c6ed-4c06-9832-d6982d6245fb"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[.........................................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="227" width="231" height="25" uuid="96af16d9-dff0-4042-bf81-190b8646db0b"/>
+				<box>
+					<bottomPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[توقيع وختم أمين مخزن البياضـة]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="324" width="555" height="1" uuid="30054a29-8085-4605-bef3-9602f401ab16"/>
+			</line>
+			<staticText>
+				<reportElement x="367" y="336" width="178" height="20" uuid="683d6a6d-8a0a-43c3-b558-9d04c08372d5"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[مراقبــــــة  العيادة (الفحــص الطبي):]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="336" width="248" height="20" uuid="45e99949-31ff-4274-ac9c-694cff21f094"/>
+				<box>
+					<bottomPen lineWidth="1.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[. توقيع وختم العيـــــــادة]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="248" y="336" width="119" height="20" uuid="8ee6c10f-2ffa-4e12-99c3-77358fcc6083"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[.........................................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="248" y="356" width="297" height="72" uuid="e043d7b3-4a3c-4046-90f5-aa59e918fe15"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[.....................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="439" width="555" height="1" uuid="d2ccc167-bfef-4c74-91d2-9f408bc0cb5f"/>
+			</line>
+			<staticText>
+				<reportElement x="325" y="454" width="220" height="20" uuid="d33c676b-1e69-44bd-8501-b6e0368fcda4"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[مراقبــــــة  مستلزمـــات النشــاطـات ث-ر-ع :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="248" y="454" width="77" height="20" uuid="0dcee563-9c92-46fd-bd09-a51ef8700636"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[.........................................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="248" y="474" width="297" height="72" uuid="0b43237f-997e-4aa3-85ba-8f32ed9cccb2"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[.....................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="454" width="248" height="20" uuid="b7d4b51e-273d-4ba4-9598-71739259a82a"/>
+				<box>
+					<bottomPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[توقيع فرع  النشــاطـات ث-ر-ع :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="96" y="111" width="57" height="20" uuid="7138b5a4-362e-4269-8169-b547afdc2cce"/>
+				<textFieldExpression><![CDATA[$F{Room_Code}.substring( 0, 1)]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="94" y="81" width="57" height="20" uuid="90214f79-a369-4de4-ab8f-3213a462f663"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{AnneEtd}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="12" y="81" width="57" height="20" uuid="bb112831-7401-46af-883a-65f618d1f411"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(Integer.parseInt($P{AnneEtd})+1)+""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="74" y="41" width="79" height="20" uuid="d1d0ee8b-0374-489c-aaf4-2b616d3f99ca"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Name_Resident}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="61" width="153" height="20" uuid="d1ba8af9-303f-41f7-abe5-209c349c0b04"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{BranchStd_Name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="41" width="76" height="20" uuid="74b02a45-80b0-4c31-87ca-4a6d702d8ca6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{LastName_Resident}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="111" width="45" height="20" uuid="b3b7d388-2810-4ec3-bf7a-3acf8ebd971e"/>
+				<textFieldExpression><![CDATA[$F{Room_Code}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="377" y="26" width="176" height="105" uuid="6b9c1cca-5e97-4b69-a44d-081eb6ebfa36"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[وزارة التعليم العالي والبحث العلمي
+الديوان الوطني للخدمات الجامعية
+مديرية الخدمات الجامعية بسكرة
+الاقامة الجامعية الحاجب
+مصلحـة الايــواء
+]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

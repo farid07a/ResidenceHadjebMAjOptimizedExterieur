@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2867f100-3ab4-411b-ade6-4393ec948c5c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="Pavilion" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT Name_Resident,LastName_Resident,DateBirth,PlaceBirth,Branch_Study.BranchStd_Name,Level_Study.DescriptionLevel,Resident_Case.Resident_Case,Room_Code 
+FROM Resident_Gl,Resident_Case,Branch_Study,Level_Study,Student_Res,Pavilion,Room
+ WHERE 
+ Resident_Gl.ID_Rsident=Student_Res.ID_Rsident 
+AND Student_Res.Id_BranchStd=Branch_Study.Id_BranchStd
+  AND Level_Study.Id_LevelStudy=Student_Res.Id_LevelStudy 
+AND Resident_Case.ID_Case_Resident=Resident_Gl.ID_Case_Resident
+
+AND Student_Res.Id_Room=Room.Id_Room 
+AND Room.ID_Pavilion=Pavilion.ID_Pavilion order by Room_Code;]]>
+	</queryString>
+	<field name="Name_Resident" class="java.lang.String"/>
+	<field name="LastName_Resident" class="java.lang.String"/>
+	<field name="DateBirth" class="java.sql.Timestamp"/>
+	<field name="PlaceBirth" class="java.lang.String"/>
+	<field name="BranchStd_Name" class="java.lang.String"/>
+	<field name="DescriptionLevel" class="java.lang.String"/>
+	<field name="Resident_Case" class="java.lang.String"/>
+	<field name="Room_Code" class="java.lang.String"/>
+	<variable name="Name_Resident_1" class="java.lang.Integer" resetType="Page" calculation="Count">
+		<variableExpression><![CDATA[$F{Name_Resident}]]></variableExpression>
+	</variable>
+	<variable name="Name_Resident_2" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$F{Name_Resident}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="82" splitType="Stretch">
+			<staticText>
+				<reportElement x="145" y="0" width="247" height="30" uuid="aec268d2-0c8b-4147-a79a-9c7396c3a10e"/>
+				<box>
+					<bottomPen lineWidth="1.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[قـائمـــة الطــلبـة المقيميـــــن بالجنـــاح]]></text>
+			</staticText>
+			<rectangle radius="10">
+				<reportElement x="220" y="41" width="116" height="38" uuid="d0cb475a-ba3e-42f1-a7da-91cfbe2175ef"/>
+			</rectangle>
+			<textField>
+				<reportElement x="235" y="41" width="86" height="38" uuid="06da2576-68e9-4999-9c9c-a374e487c324"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Pavilion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="53" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="450" y="20" width="105" height="23" uuid="bcdcc5e0-1a4f-4eda-bf43-bbd2e68b99c5"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="31" splitType="Stretch">
+			<staticText>
+				<reportElement x="496" y="2" width="59" height="29" uuid="e57b630e-3207-450a-a861-4f26e3a5f12a"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[الاسم]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="429" y="2" width="67" height="29" uuid="f49c18fa-1fe6-464a-b1fd-4084308d4815"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[اللقب]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="357" y="2" width="72" height="29" uuid="b2e09be4-5c94-41c2-8f6e-406e5432cf73"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[تاريخ الميلاد]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="286" y="2" width="71" height="29" uuid="2c742dd6-d471-4bc7-a1e2-3f980b4e2395"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[مكان الميلاد ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="86" y="2" width="85" height="29" uuid="7589d592-1ab6-40ca-b47b-9262ebe319ea"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[المستـوي]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="54" y="2" width="32" height="29" uuid="262b2489-1304-4330-b079-17fad8214a5d"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[الغرفة]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="2" width="54" height="29" uuid="40525e08-fb14-4672-98f3-6639295d7224"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[الحالـة]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="171" y="2" width="115" height="29" uuid="9a3fc061-def7-4c30-b9b5-bfd7e8078d54"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[التخــصص]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="429" y="0" width="67" height="20" uuid="be278fb4-9f5a-424e-a6a6-1da6915c76bd"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{LastName_Resident}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="357" y="0" width="72" height="20" uuid="6bfa83e8-9ce7-4684-bb58-88b012cfc438"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/YYYY").format($F{DateBirth})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="286" y="0" width="71" height="20" uuid="c0ff1b0d-9761-4ba1-9707-669501f86a56"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PlaceBirth}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="86" y="0" width="85" height="20" uuid="f2a7d7bd-56cc-436c-b7c8-8d65218dde48"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DescriptionLevel}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="54" y="0" width="32" height="20" uuid="72eccd8c-b1da-4a5c-8ccc-786b044fea38"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Room_Code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="54" height="20" uuid="6cc033d8-d881-4e42-8ae8-090ba12d0685"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Resident_Case}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="171" y="0" width="115" height="20" uuid="42df7c90-d0ef-46c4-bc8c-e10f46d1a3c0"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{BranchStd_Name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="496" y="0" width="59" height="20" uuid="8cb67d62-f298-4fd2-b771-10daa4fe1250"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Name_Resident}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="397" y="0" width="58" height="20" uuid="7c42f133-5a9b-49cb-8ad6-3c77a58ef69d"/>
+				<textFieldExpression><![CDATA[$V{Name_Resident_1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="455" y="0" width="97" height="20" uuid="128f8c47-ab82-45b5-9bc7-33c416f23e02"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[عـــدد الطـلبــة :]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<lastPageFooter>
+		<band height="65">
+			<textField>
+				<reportElement x="392" y="0" width="58" height="20" uuid="4435ca80-ed80-424e-a4ae-b3231c237b3d"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{Name_Resident_2}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="455" y="0" width="100" height="20" uuid="c7073639-1fd0-4d56-b1ba-8b4c4efb5753"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[عـــدد الطـلاب الكلــي]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="235" y="45" width="86" height="20" uuid="0d9fda33-c680-4c48-b209-43ed32ab990d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</lastPageFooter>
+</jasperReport>

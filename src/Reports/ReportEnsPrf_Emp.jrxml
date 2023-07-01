@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" columnCount="2" pageWidth="595" pageHeight="842" columnWidth="277" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5beec282-64f8-4351-b2d3-d7ec69bddf8a">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="TypRes" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[Select Name_Resident,LastName_Resident ,DateBirth,NumCard_Resident,PlaceBirth,CodeBare_Resident,imageStd 
+FROM  Resident_Gl
+WHERE
+ Id_Ptrn_Res=4;]]>
+	</queryString>
+	<field name="Name_Resident" class="java.lang.String"/>
+	<field name="LastName_Resident" class="java.lang.String"/>
+	<field name="DateBirth" class="java.sql.Timestamp"/>
+	<field name="NumCard_Resident" class="java.lang.Integer"/>
+	<field name="PlaceBirth" class="java.lang.String"/>
+	<field name="CodeBare_Resident" class="java.lang.String"/>
+	<field name="imageStd" class="java.io.InputStream"/>
+	<detail>
+		<band height="138" splitType="Stretch">
+			<rectangle>
+				<reportElement x="10" y="10" width="245" height="125" uuid="b19cf5ad-c7bc-4827-ad37-8899f06df869"/>
+				<graphicElement>
+					<pen lineWidth="1.5" lineStyle="Double"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="199" y="63" width="52" height="15" uuid="b5a1e60a-863f-4f40-b5ee-5b3eb4f6ddf2"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[تاريخ الميلاد:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="197" y="47" width="54" height="15" uuid="5e3e5f8c-8aed-4204-9c5d-154f4b5e5cb3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[الاسم  و اللقب:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="78" y="11" width="149" height="15" uuid="8fc812a9-d441-4e25-9afc-53c066a683db"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[الاقامـة الجـامعيـة الحاجب]]></text>
+			</staticText>
+			<image scaleImage="FillFrame">
+				<reportElement x="15" y="80" width="63" height="47" uuid="30b13b0d-dcf5-4735-8638-84f675a68f62"/>
+				<imageExpression><![CDATA["D:\\Image_Signature\\SmalIcon.JPG"]]></imageExpression>
+			</image>
+			<componentElement>
+				<reportElement x="91" y="90" width="79" height="35" uuid="fb26efb2-45f0-45c6-81ce-aa8c13c51ba4"/>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128C" drawText="false" checksumRequired="false" barHeight="95">
+					<jr:codeExpression><![CDATA[$F{CodeBare_Resident}]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+			<image scaleImage="FillFrame">
+				<reportElement x="15" y="17" width="54" height="59" uuid="c069f795-1bc5-4fba-a426-28434051edd8"/>
+				<imageExpression><![CDATA[$F{imageStd}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="140" y="47" width="59" height="15" uuid="d305b1d5-7b15-4f9e-8d0c-201fbd23f09d"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Name_Resident}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="91" y="47" width="49" height="15" uuid="30649bfd-32b9-479e-b01c-bf5027955ae5"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{LastName_Resident}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="63" width="59" height="15" uuid="4075098b-b77e-4dc8-a501-4db2887dc0e0"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/YYYY").format($F{DateBirth})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="124" y="63" width="16" height="15" uuid="5ef47659-a9c1-4cca-accb-63904c6f2ad1"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[بــ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="70" y="63" width="54" height="15" uuid="564b6e6a-5c7e-4623-b2f5-5d54105703d1"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{PlaceBirth}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="70" y="27" width="42" height="15" forecolor="#FF0000" uuid="c2e92b18-0b79-4ab9-a898-45aa0e9a6af1"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{NumCard_Resident}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="112" y="26" width="87" height="15" uuid="594e47e9-77f3-413e-af7d-4cd6de965c35"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{TypRes}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

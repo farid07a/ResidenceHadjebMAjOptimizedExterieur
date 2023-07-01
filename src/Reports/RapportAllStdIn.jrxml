@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d513302f-7281-4f0f-828a-564e842df6a6">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<queryString>
+		<![CDATA[SELECT
+     Branch_Study."BranchStd_Name" AS Branch_Study_BranchStd_Name,
+     Level_Study."DescriptionLevel" AS Level_Study_DescriptionLevel,
+     Resident_Gl."Name_Resident" AS Resident_Gl_Name_Resident,
+     Resident_Gl."LastName_Resident" AS Resident_Gl_LastName_Resident,
+     Resident_Gl."DateBirth" AS Resident_Gl_DateBirth,
+     Resident_Gl."PlaceBirth" AS Resident_Gl_PlaceBirth
+FROM
+     "dbo"."Branch_Study" Branch_Study INNER JOIN "dbo"."Student_Res" Student_Res ON Branch_Study."Id_BranchStd" = Student_Res."Id_BranchStd"
+     INNER JOIN "dbo"."Level_Study" Level_Study ON Student_Res."Id_LevelStudy" = Level_Study."Id_LevelStudy"
+     INNER JOIN "dbo"."Resident_Gl" Resident_Gl ON Student_Res."ID_Rsident" = Resident_Gl."ID_Rsident" order by  Resident_Gl."Name_Resident"]]>
+	</queryString>
+	<field name="Branch_Study_BranchStd_Name" class="java.lang.String"/>
+	<field name="Level_Study_DescriptionLevel" class="java.lang.String"/>
+	<field name="Resident_Gl_Name_Resident" class="java.lang.String"/>
+	<field name="Resident_Gl_LastName_Resident" class="java.lang.String"/>
+	<field name="Resident_Gl_DateBirth" class="java.sql.Timestamp"/>
+	<field name="Resident_Gl_PlaceBirth" class="java.lang.String"/>
+	<variable name="variable1" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="132" splitType="Stretch">
+			<staticText>
+				<reportElement x="145" y="49" width="249" height="37" uuid="6acffc5f-5da0-4792-a968-836eebf7a81b"/>
+				<box>
+					<bottomPen lineWidth="1.5" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[قــائمـــة الطـلبــــة المقيـميــــــن]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="456" y="96" width="99" height="25" forecolor="#000000" uuid="235374eb-87b8-409a-b732-1c220fdb2e6c"/>
+				<box>
+					<pen lineWidth="1.5"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="394" y="0" width="161" height="86" uuid="d84e474f-a02e-4b1c-ae3e-182b11cc1c70"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[وزارة التعليم العالي والبحث العلمي
+الديوان الوطني للخدمات الجامعية
+مديرية الخدمات الجامعية بسكرة
+الاقامة الجامعية الحاجب
+مصلحـة الايــواء
+]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="92" height="26" forecolor="#000000" uuid="7a3ef5e2-1634-4194-a949-f94387442a45"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[المستـوي]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="94" y="0" width="122" height="26" forecolor="#000000" uuid="f133d7e2-9dc4-419f-8b3d-a6570cc39aba"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[التخــصص]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="216" y="0" width="86" height="26" forecolor="#000000" uuid="6efb78a2-f2a9-4dda-ae6a-e5e92d95dbbc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[مكان الميلاد ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="302" y="0" width="92" height="26" forecolor="#000000" uuid="7267f375-1007-4a6e-8702-ff67f5c3fead"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[تاريخ الميلاد]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="394" y="0" width="82" height="25" forecolor="#000000" uuid="601412d5-e602-41f6-9771-33e68beb88ce"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[اللقب]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="476" y="0" width="76" height="25" forecolor="#000000" uuid="747e6fbd-1a01-4d88-b81c-7df24c1484dc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[الاسم ]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="555" height="23" uuid="baff9f58-d0ad-4c57-a841-95f02e1715ce"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="476" y="0" width="77" height="23" uuid="b8beacb6-4651-4176-ab80-8013ce07192b"/>
+					<box>
+						<topPen lineWidth="1.5"/>
+						<leftPen lineWidth="1.5"/>
+						<bottomPen lineWidth="1.5"/>
+						<rightPen lineWidth="1.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Resident_Gl_Name_Resident}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="394" y="0" width="82" height="23" uuid="f56034cf-6519-42a8-bd3f-9b0840b0d5fd"/>
+					<box>
+						<topPen lineWidth="1.5"/>
+						<leftPen lineWidth="1.5"/>
+						<bottomPen lineWidth="1.5"/>
+						<rightPen lineWidth="1.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Resident_Gl_LastName_Resident}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="302" y="0" width="92" height="23" uuid="ba3e8428-6236-4fee-bcc3-ef03d2227244"/>
+					<box>
+						<topPen lineWidth="1.5"/>
+						<leftPen lineWidth="1.5"/>
+						<bottomPen lineWidth="1.5"/>
+						<rightPen lineWidth="1.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Resident_Gl_DateBirth}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="216" y="0" width="86" height="23" uuid="91f08c40-c539-462f-892c-2d98d3176a2d"/>
+					<box>
+						<topPen lineWidth="1.5"/>
+						<leftPen lineWidth="1.5"/>
+						<bottomPen lineWidth="1.5"/>
+						<rightPen lineWidth="1.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Resident_Gl_PlaceBirth}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="94" y="0" width="120" height="23" uuid="fc921590-af19-41c1-bfbe-32458e34db28"/>
+					<box>
+						<topPen lineWidth="1.5"/>
+						<leftPen lineWidth="1.5"/>
+						<bottomPen lineWidth="1.5"/>
+						<rightPen lineWidth="1.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Branch_Study_BranchStd_Name}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="2" y="0" width="92" height="23" uuid="ce9455b2-4990-41b2-92aa-73fbbc9870eb"/>
+					<box>
+						<topPen lineWidth="1.5"/>
+						<leftPen lineWidth="1.5"/>
+						<bottomPen lineWidth="1.5"/>
+						<rightPen lineWidth="1.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Level_Study_DescriptionLevel}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="46" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="35c098c2-5570-4cec-a7ec-ccc1320d0c3a"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="485" y="14" width="67" height="20" uuid="bc48da86-77e7-4330-869f-109cb40f67f8"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="28" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="24" forecolor="#D0B48E" backcolor="#000000" uuid="863fb556-96fe-4702-b0fc-0928e053b956"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="513" y="0" width="40" height="20" forecolor="#FFFFFF" uuid="9b48e9b3-3c88-4556-a1dc-61199b0365b6"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="433" y="0" width="80" height="20" forecolor="#FFFFFF" uuid="9767f454-dfb3-40b8-a2ce-7c5637f68671"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="1" width="197" height="20" forecolor="#FFFFFF" uuid="35f4e0ed-a5bf-4149-928f-d81616c012e2"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<lastPageFooter>
+		<band height="50"/>
+	</lastPageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
